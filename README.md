@@ -76,9 +76,6 @@ helpdesk-api/
 
 Requires Python 3.11 or newer.
 
-***Install dependencies before running anything below — the application and the
-tests both depend on them.***
-
 ```bash
 git clone https://github.com/C-Ronny/helpdesk-api.git
 cd helpdesk-api
@@ -88,6 +85,8 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 
 pip install -r requirements.txt
 ```
+***Install dependencies before running anything below, the application and the
+tests both depend on them.***
 
 ---
 
