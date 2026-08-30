@@ -76,6 +76,9 @@ helpdesk-api/
 
 Requires Python 3.11 or newer.
 
+***Install dependencies before running anything below — the application and the
+tests both depend on them.***
+
 ```bash
 git clone https://github.com/C-Ronny/helpdesk-api.git
 cd helpdesk-api
@@ -91,7 +94,7 @@ pip install -r requirements.txt
 ## 4. Running the application
 
 ```bash
-uvicorn app.main:app --reload
+python -m uvicorn app.main:app --reload
 ```
 
 The API is served at `http://127.0.0.1:8000`.
@@ -119,7 +122,7 @@ Authentication is out of scope. Every request identifies its caller with an
 ## 5. Running the tests
 
 ```bash
-pytest
+python -m pytest
 ```
 
 Expected: **71 passed**, 98% coverage.
