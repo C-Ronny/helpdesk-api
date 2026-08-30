@@ -10,12 +10,9 @@ serialises by alias automatically.
 """
 from datetime import datetime
 from typing import Generic, TypeVar
-
 from pydantic import BaseModel, ConfigDict, Field, field_validator
-
 from app.config import COMMENT_MAX_LENGTH, DESCRIPTION_MAX_LENGTH, TITLE_MAX_LENGTH
 from app.enums import Category, Priority, Role, Status
-
 
 def _reject_blank(value: str) -> str:
     """Whitespace-only input is empty input."""
@@ -23,7 +20,6 @@ def _reject_blank(value: str) -> str:
     if not stripped:
         raise ValueError("must not be blank")
     return stripped
-
 
 class UserOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -33,7 +29,6 @@ class UserOut(BaseModel):
     email: str
     role: Role
 
-
 class TicketCreate(BaseModel):
     title: str = Field(max_length=TITLE_MAX_LENGTH)
     description: str = Field(max_length=DESCRIPTION_MAX_LENGTH)
@@ -41,7 +36,6 @@ class TicketCreate(BaseModel):
     priority: Priority = Priority.MEDIUM
 
     _strip_title = field_validator("title", "description")(_reject_blank)
-
 
 class TicketOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -57,22 +51,18 @@ class TicketOut(BaseModel):
     created_at: datetime = Field(serialization_alias="createdAt")
     updated_at: datetime = Field(serialization_alias="updatedAt")
 
-
 class AssignRequest(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
     assignee_id: int = Field(alias="assigneeId")
 
-
 class StatusUpdateRequest(BaseModel):
     status: Status
-
 
 class CommentCreate(BaseModel):
     body: str = Field(max_length=COMMENT_MAX_LENGTH)
 
     _strip_body = field_validator("body")(_reject_blank)
-
 
 class CommentOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -83,9 +73,7 @@ class CommentOut(BaseModel):
     author: UserOut
     created_at: datetime = Field(serialization_alias="createdAt")
 
-
 T = TypeVar("T")
-
 
 class Page(BaseModel, Generic[T]):
     """Envelope for paginated list responses."""
@@ -94,8 +82,7 @@ class Page(BaseModel, Generic[T]):
     total: int
     page: int
     page_size: int = Field(serialization_alias="pageSize")
-    total_pages: int = Field(serialization_alias="totalPages")
-
+    total_pages: int = Field(serialization_alias="totalPages")a
 
 class ErrorResponse(BaseModel):
     """The single error shape every failing endpoint returns."""

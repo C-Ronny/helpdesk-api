@@ -1,17 +1,13 @@
 from datetime import datetime, timezone
 from typing import Optional
-
 from sqlalchemy import DateTime, Enum as SAEnum, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
 from app.config import COMMENT_MAX_LENGTH, DESCRIPTION_MAX_LENGTH, TITLE_MAX_LENGTH
 from app.database import Base
 from app.enums import Category, Priority, Role, Status
 
-
 def utcnow() -> datetime:
     return datetime.now(timezone.utc)
-
 
 class User(Base):
     __tablename__ = "users"
@@ -20,7 +16,6 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(100))
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True)
     role: Mapped[Role] = mapped_column(SAEnum(Role, native_enum=False))
-
 
 class Ticket(Base):
     __tablename__ = "tickets"
@@ -55,7 +50,6 @@ class Ticket(Base):
     comments: Mapped[list["Comment"]] = relationship(
         back_populates="ticket", cascade="all, delete-orphan"
     )
-
 
 class Comment(Base):
     __tablename__ = "comments"
