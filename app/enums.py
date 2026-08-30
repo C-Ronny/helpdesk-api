@@ -33,11 +33,9 @@ class Role(str, Enum):
 
 # The ticket lifecycle, expressed as a state machine.
 #
-# Business rule 4 ("a ticket can only be closed after it has been resolved")
-# and rule 5 ("invalid status transitions must be rejected") are both enforced
-# by this single table: CLOSED is only reachable from RESOLVED, and CLOSED is
-# terminal. RESOLVED -> IN_PROGRESS exists so a ticket can be reopened when a
-# fix turns out not to have worked.
+# CLOSED is only reachable from RESOLVED, and CLOSED is terminal. 
+# RESOLVED -> IN_PROGRESS exists so a ticket can be reopened if a fix fails
+
 ALLOWED_TRANSITIONS: dict[Status, frozenset[Status]] = {
     Status.OPEN: frozenset({Status.IN_PROGRESS}),
     Status.IN_PROGRESS: frozenset({Status.RESOLVED}),

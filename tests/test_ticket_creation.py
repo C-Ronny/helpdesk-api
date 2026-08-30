@@ -1,5 +1,5 @@
 """
-Ticket creation and input validation (business rules 1, 2, 7, 8)
+Ticket creation and input validation
 """
 
 def test_create_ticket_returns_201_and_defaults_to_open(client, customer):

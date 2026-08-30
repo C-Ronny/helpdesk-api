@@ -1,9 +1,7 @@
 """
 Seed a small fixed set of users.
 
-The specification defines no user-creation endpoint, so users are created at
-startup. IDs are stable and documented in the README, which lets a reviewer
-send requests immediately.
+Users are created at startup, so requests could be sent immediately.
 """
 from sqlalchemy import select
 from sqlalchemy.orm import Session

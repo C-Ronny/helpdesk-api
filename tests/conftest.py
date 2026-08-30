@@ -1,5 +1,5 @@
 """
-Each test gets a completely fresh in-memory database
+Each test gets a fresh in-memory database
 They never see each other's data and can run in any order.
 """
 import pytest

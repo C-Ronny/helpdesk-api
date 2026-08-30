@@ -1,4 +1,7 @@
-"""Data access for ticket comments."""
+"""
+Data access for ticket comments
+"""
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 

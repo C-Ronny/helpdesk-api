@@ -1,4 +1,7 @@
-"""Shared FastAPI dependencies."""
+"""
+Shared FastAPI dependencies
+"""
+
 from typing import Annotated
 
 from fastapi import Depends, Header

@@ -1,5 +1,6 @@
-"""Retrieval, filtering, searching and pagination."""
-
+"""
+Testing retrieval, filtering, searching and pagination
+"""
 
 def test_get_ticket_by_id(client, customer, make_ticket):
     ticket = make_ticket()

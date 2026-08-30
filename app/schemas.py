@@ -1,5 +1,5 @@
 """
-Pydantic schemas: the shape of the data on the wire.
+Pydantic schemas: the shape of the data
 
 Kept deliberately separate from the ORM models so the public API contract can
 evolve independently of the database, and so internal columns are never
