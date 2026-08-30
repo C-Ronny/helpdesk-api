@@ -82,7 +82,7 @@ class Page(BaseModel, Generic[T]):
     total: int
     page: int
     page_size: int = Field(serialization_alias="pageSize")
-    total_pages: int = Field(serialization_alias="totalPages")a
+    total_pages: int = Field(serialization_alias="totalPages")
 
 class ErrorResponse(BaseModel):
     """The single error shape every failing endpoint returns."""
